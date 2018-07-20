@@ -136,8 +136,9 @@ exports.store = (req, res, next) => {
                 return res.status(500).send(err)
             }
 
+            var gameResult
             try {
-                const gameResult = JSON.parse(JSON.parse(result))
+                gameResult = JSON.parse(JSON.parse(result))
             } catch (err) {
                 console.log('Error when parse addNewGameToBusiness result from net', result , {err})
                 return res.status(500).send(err)
