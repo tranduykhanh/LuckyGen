@@ -61,12 +61,19 @@ var Client = /** @class */ (function () {
      *
      * @return {number} Player turn left
      */
-    Client.prototype.addNewPlayer = function (gameID, playerID, playerAddr, turns) {
+    Client.prototype.addNewPlayer = function (gameID, playerID, playerName, playerAddr, turns) {
         if (turns === void 0) { turns = 1; }
-        return this.httpClient.post("games/" + gameID + "/players", {
-            player_addr: playerAddr,
+        console.log({
+            player_address: playerAddr,
+            player_name: playerName,
             player_id: playerID,
-            turns: 1
+            turns: turns
+        });
+        return this.httpClient.post("games/" + gameID + "/players", {
+            player_address: playerAddr,
+            player_name: playerName,
+            player_id: playerID,
+            turns: turns
         }).then(function (data) { return data.data; });
     };
     /**
